@@ -5,9 +5,12 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ClientRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
 #[ApiResource]
+#[UniqueEntity('email', message: "Bu: {{ value }} email allaqachon mavjud.")]
 class Client
 {
     #[ORM\Id]
@@ -16,9 +19,12 @@ class Client
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Email bo\'sh bo\'lmasligi kerak.')]
+    #[Assert\Email(message: 'Email formati noto\'g\'ri.')]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Ism bo\'sh bo\'lmasligi kerak.')]
     private ?string $givenName = null;
 
     #[ORM\Column]
@@ -26,6 +32,7 @@ class Client
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank(message: 'Iltimos, kompaniyani tanlang.')]
     private ?Company $company = null;
 
     public function getId(): ?int
