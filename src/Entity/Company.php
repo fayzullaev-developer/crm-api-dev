@@ -6,32 +6,41 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\CompanyRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CompanyRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['company:read']],
+    denormalizationContext: ['groups' => ['company:write']],
+)]
 #[UniqueEntity('email', message: "Bu: {{ value }} email allaqachon mavjud.")]
 class Company
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['company:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Email bo\'sh bo\'lmasligi kerak.')]
     #[Assert\Email(message: 'Email formati noto\'g\'ri.')]
+    #[Groups(['company:read', 'company:write'])]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Nom bo\'sh bo\'lmasligi kerak.')]
+    #[Groups(['company:read', 'company:write'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Manzil bo\'sh bo\'lmasligi kerak.')]
+    #[Groups(['company:read', 'company:write'])]
     private ?string $address = null;
 
     #[ORM\Column]
+    #[Groups(['company:read', 'company:write'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     public function getId(): ?int

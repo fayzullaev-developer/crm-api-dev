@@ -6,33 +6,42 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ClientRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['client:read']],
+    denormalizationContext: ['groups' => ['client:write']],
+)]
 #[UniqueEntity('email', message: "Bu: {{ value }} email allaqachon mavjud.")]
 class Client
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['client:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Email bo\'sh bo\'lmasligi kerak.')]
     #[Assert\Email(message: 'Email formati noto\'g\'ri.')]
+    #[Groups(['client:read', 'client:write'])]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Ism bo\'sh bo\'lmasligi kerak.')]
+    #[Groups(['client:read', 'client:write'])]
     private ?string $givenName = null;
 
     #[ORM\Column]
+    #[Groups(['client:read', 'client:write'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     #[Assert\NotBlank(message: 'Iltimos, kompaniyani tanlang.')]
+    #[Groups(['client:read', 'client:write'])]
     private ?Company $company = null;
 
     public function getId(): ?int
