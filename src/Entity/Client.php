@@ -44,6 +44,10 @@ class Client
     #[Groups(['client:read', 'client:write'])]
     private ?Company $company = null;
 
+    #[ORM\ManyToOne]
+    #[Groups(['client:read', 'client:write'])]
+    private ?MediaObject $image = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -93,6 +97,18 @@ class Client
     public function setCompany(?Company $company): static
     {
         $this->company = $company;
+
+        return $this;
+    }
+
+    public function getImage(): ?MediaObject
+    {
+        return $this->image;
+    }
+
+    public function setImage(?MediaObject $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

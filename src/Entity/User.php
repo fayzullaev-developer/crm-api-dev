@@ -52,6 +52,10 @@ class User
     #[Groups(['user:read'])]
     private array $roles = ["ROLE_USER"];
 
+    #[ORM\ManyToOne]
+    #[Groups(['user:read', 'user:write'])]
+    private ?MediaObject $image = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -125,6 +129,18 @@ class User
     public function setRoles(array $roles): static
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getImage(): ?MediaObject
+    {
+        return $this->image;
+    }
+
+    public function setImage(?MediaObject $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }
