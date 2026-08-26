@@ -1,0 +1,40 @@
+1. Nima qilish kerakligini ko'rib chiqish
+2. Filter, controller
+3. token orqali avtorizatsiyani sozlash
+4. data fixtures (project uchun ma'lumotlar to'ldirish)
+5.
+
+
+-- bajarilganlar --
+
+8. media_object jadvalini boshqa jadvallarga bog'lash
+7. media_object jadvali yaratish
+6. Serialization (unisini ko'rsat bunisini ko'rsatma degan narsalarni qo'shish)
+5. Validatsiya har bir entity uchun (user, company, client)
+4. Github'ga yuklash
+3. password ko'rinadigani va roles
+2. company jadvalini client jadvaliga ulash
+1. Entity larni yaratamiz
+    - user:
+        id
+        email
+        password
+        password_visible
+        givenName
+        roles
+        image
+        lastActivityAt
+    - company:
+        id
+        email
+        name
+        image
+        address
+        createdAt
+    - client:
+        id
+        email
+        givenName
+        image
+        company_id
+        createdAt
