@@ -1,8 +1,10 @@
 1. Nima qilish kerakligini ko'rib chiqish
 2. Filter, controller
-3. token orqali avtorizatsiyani sozlash
-4. data fixtures (project uchun ma'lumotlar to'ldirish)
-5.
+3. Ob'yektni bir joyda yaratib, parolni shifrlash uchun factory yaratish
+4. MO'ga tranzaksiya orqali yozish uchun Manager yaratish
+5. token orqali avtorizatsiyani sozlash
+6. data fixtures (project uchun ma'lumotlar to'ldirish)
+7.
 
 
 -- bajarilganlar --
