@@ -2,6 +2,10 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\CompanyRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,8 +17,19 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiResource(
     normalizationContext: ['groups' => ['company:read']],
     denormalizationContext: ['groups' => ['company:write']],
+    paginationItemsPerPage: 10
 )]
 #[UniqueEntity('email', message: "Bu: {{ value }} email allaqachon mavjud.")]
+#[ApiFilter(
+    SearchFilter::class,
+    properties: [
+        'email' => 'partial',
+        'name' => 'partial',
+        'address' => 'partial',
+    ])
+]
+#[ApiFilter(OrderFilter::class, properties: ['id'])]
+#[ApiFilter(DateFilter::class, properties: ['createdAt'])]
 class Company
 {
     #[ORM\Id]

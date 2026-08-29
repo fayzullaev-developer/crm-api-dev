@@ -2,6 +2,10 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,8 +17,19 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiResource(
     normalizationContext: ['groups' => ['user:read']],
     denormalizationContext: ['groups' => ['user:write']],
+    paginationItemsPerPage: 10
 )]
 #[UniqueEntity('email', message: "Bu: {{ value }} email allaqachon mavjud.")]
+#[ApiFilter(
+    SearchFilter::class,
+    properties: [
+        'email' => 'partial',
+        'passwordVisible' => 'partial',
+        'givenName' => 'partial',
+    ])
+]
+#[ApiFilter(OrderFilter::class, properties: ['id'])]
+#[ApiFilter(DateFilter::class, properties: ['lastActivityAt'])]
 class User
 {
     #[ORM\Id]

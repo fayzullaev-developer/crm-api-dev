@@ -1,5 +1,6 @@
-1. Nima qilish kerakligini ko'rib chiqish
-2. Filter, controller
+1.
+2. API-platform'ning avtomatik POST endpoint'i bizga to'g'ri kelmagani
+   uchun (sababi parolni shifrlash kerak) o'zimiz alohida POST endpoint'i yaratib  controller yaratamiz
 3. Ob'yektni bir joyda yaratib, parolni shifrlash uchun factory yaratish
 4. MO'ga tranzaksiya orqali yozish uchun Manager yaratish
 5. token orqali avtorizatsiyani sozlash
@@ -9,7 +10,8 @@
 
 -- bajarilganlar --
 
-8. media_object jadvalini boshqa jadvallarga bog'lash
+9. Filter har bir entity'ga
+8. media_object jadvalini boshqa jadvallarga bog'lash, /public/media/* papkasini gitignore'ga qo'shish
 7. media_object jadvali yaratish
 6. Serialization (unisini ko'rsat bunisini ko'rsatma degan narsalarni qo'shish)
 5. Validatsiya har bir entity uchun (user, company, client)
