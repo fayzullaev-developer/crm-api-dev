@@ -25,6 +25,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         new Post(
             uriTemplate: '/users/my',
             controller: UserCreateAction::class,
+            validate: false,
             name: 'createUser',
         ),
         new Delete(),
@@ -74,7 +75,7 @@ class User implements PasswordAuthenticatedUserInterface
     private ?string $givenName = null;
 
     #[ORM\Column]
-    #[Groups(['user:read', 'user:write'])]
+    #[Groups(['user:read'])]
     private ?\DateTimeImmutable $lastActivityAt = null;
 
     #[ORM\Column]
