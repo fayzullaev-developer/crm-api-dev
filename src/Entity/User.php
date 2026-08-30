@@ -8,13 +8,16 @@ use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Controller\UserCreateAction;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -28,7 +31,13 @@ use Symfony\Component\Validator\Constraints as Assert;
             validate: false,
             name: 'createUser',
         ),
+        new Post(
+            uriTemplate: '/users/auth',
+            name: 'auth'
+        ),
+        new Get(),
         new Delete(),
+        new Patch(),
     ],
     normalizationContext: ['groups' => ['user:read']],
     denormalizationContext: ['groups' => ['user:write']],
@@ -45,7 +54,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 ]
 #[ApiFilter(OrderFilter::class, properties: ['id'])]
 #[ApiFilter(DateFilter::class, properties: ['lastActivityAt'])]
-class User implements PasswordAuthenticatedUserInterface
+class User implements PasswordAuthenticatedUserInterface, UserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -173,5 +182,10 @@ class User implements PasswordAuthenticatedUserInterface
         $this->image = $image;
 
         return $this;
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->getEmail();
     }
 }
