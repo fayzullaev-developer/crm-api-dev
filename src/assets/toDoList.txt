@@ -1,11 +1,11 @@
-1.
-2. API-platform'ning avtomatik POST endpoint'i bizga to'g'ri kelmagani
-   uchun (sababi parolni shifrlash kerak) o'zimiz alohida POST endpoint'i yaratib  controller yaratamiz
-3. Ob'yektni bir joyda yaratib, parolni shifrlash uchun factory yaratish
-4. MO'ga tranzaksiya orqali yozish uchun Manager yaratish
-5. token orqali avtorizatsiyani sozlash
-6. data fixtures (project uchun ma'lumotlar to'ldirish)
-7.
+1. API-platform'ning avtomatik POST endpoint'i User entity'mizga to'g'ri kelmagani
+   uchun (sababi parolni shifrlash kerak) o'zimiz alohida POST endpoint'i yaratib,
+   unga yangi controller yaratib ulaymiz
+2. Controller'ni ichida ishlatish uchun Factory yaratish (Ob'yektni bir joyda yaratib, parolni shifrlash uchun)
+3. Controller'ni ichida foydalanish uchun Manager yaratish (MOga tranzaksiya orqali yozish uchun), va validatorni ulash
+4. token orqali avtorizatsiyani sozlash
+5. fixture'lar (project uchun ma'lumotlar) ni kiritish uchun factory yaratilmagan entity'lar uchun factory yaratamiz
+6.
 
 
 -- bajarilganlar --
