@@ -1,13 +1,10 @@
-1. token orqali avtorizatsiyani sozlash
-2. fixture'lar (project uchun ma'lumotlar) ni kiritish uchun factory yaratilmagan entity'lar uchun factory yaratamiz
+1.
+2. fixture'lar (project uchun ma'lumotlar) ni kiritish uchun factory yaratilmagan entity'larga factory yaratamiz
 3.
-4.
-5.
-6.
-
 
 -- bajarilganlar --
 
+13. token orqali avtorizatsiyani sozlash
 12. Controller'ni ichida foydalanish uchun Manager yaratish (MOga tranzaksiya orqali yozish uchun), va validatorni ulash
 11. Controller'ni ichida ishlatish uchun Factory yaratish (Ob'yektni bir joyda yaratib, parolni shifrlash uchun)
 10. API-platform'ning avtomatik POST endpoint'i User entity'mizga to'g'ri kelmagani
