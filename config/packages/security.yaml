@@ -13,9 +13,9 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        # /api/users/my endpoint'iga POST orqali murojaat qilinganda - token so'ralmasin
+        # /api/users/create endpoint'iga POST orqali murojaat qilinganda - token so'ralmasin
         user_create:
-            pattern: ^/api/users/my$
+            pattern: ^/api/users/create$
             methods:
                 - post
             security: false

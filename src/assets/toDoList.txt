@@ -1,6 +1,10 @@
 1.
 2. fixture'lar (project uchun ma'lumotlar) ni kiritish uchun factory yaratilmagan entity'larga factory yaratamiz
-3.
+   va fixture'larni kiritamiz:
+   1) User Fixtures +
+   2) Company Fixtures
+   3) Client Fixtures
+3. Clientlarni company bo'yicha olish uchun repository yaratish
 
 -- bajarilganlar --
 

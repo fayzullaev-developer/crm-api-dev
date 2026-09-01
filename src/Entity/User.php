@@ -26,7 +26,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     operations: [
         new GetCollection(),
         new Post(
-            uriTemplate: '/users/my',
+            uriTemplate: '/users/create',
             controller: UserCreateAction::class,
             validate: false,
             name: 'createUser',
