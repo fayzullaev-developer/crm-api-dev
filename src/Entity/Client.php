@@ -7,6 +7,14 @@ use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\OpenApi\Model\Operation;
+use ApiPlatform\OpenApi\Model\Parameter;
+use App\Controller\GetClientsByCompanyAction;
 use App\Repository\ClientRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -15,6 +23,29 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
 #[ApiResource(
+    operations: [
+        new GetCollection(
+            uriTemplate: '/client/by-company',
+            controller: GetClientsByCompanyAction::class,
+            openapi: new Operation(
+                parameters: [
+                    new Parameter(
+                        name: 'companyId',
+                        in: 'query',
+                        description: 'Mijozni kompaniya bo\'yicha olish',
+                        required: true,
+                        schema: ['type' => 'integer', 'required' => true],
+                    )
+                ]
+            ),
+            name: 'getClientsByCompany',
+        ),
+        new GetCollection(),
+        new Post(),
+        new Get(),
+        new Patch(),
+        new Delete(),
+    ],
     normalizationContext: ['groups' => ['client:read']],
     denormalizationContext: ['groups' => ['client:write']],
     paginationItemsPerPage: 10

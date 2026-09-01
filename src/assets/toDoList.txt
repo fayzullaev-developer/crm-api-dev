@@ -1,9 +1,10 @@
-1. Clientlarni company bo'yicha olish uchun repository yaratish
+1.
 2.
 3.
 
 -- bajarilganlar --
 
+15. Clientlarni company bo'yicha olish uchun repository yaratish (2 soat)
 14. fixture'lar (project uchun ma'lumotlar) ni kiritish uchun factory yaratilmagan entity'larga factory yaratamiz
        va fixture'larni kiritamiz:
        1) User Fixtures +
