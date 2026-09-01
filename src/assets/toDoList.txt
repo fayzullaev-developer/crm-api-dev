@@ -1,13 +1,14 @@
-1.
-2. fixture'lar (project uchun ma'lumotlar) ni kiritish uchun factory yaratilmagan entity'larga factory yaratamiz
-   va fixture'larni kiritamiz:
-   1) User Fixtures +
-   2) Company Fixtures
-   3) Client Fixtures
-3. Clientlarni company bo'yicha olish uchun repository yaratish
+1. Clientlarni company bo'yicha olish uchun repository yaratish
+2.
+3.
 
 -- bajarilganlar --
 
+14. fixture'lar (project uchun ma'lumotlar) ni kiritish uchun factory yaratilmagan entity'larga factory yaratamiz
+       va fixture'larni kiritamiz:
+       1) User Fixtures +
+       2) Company Fixtures +
+       3) Client Fixtures +
 13. token orqali avtorizatsiyani sozlash
 12. Controller'ni ichida foydalanish uchun Manager yaratish (MOga tranzaksiya orqali yozish uchun), va validatorni ulash
 11. Controller'ni ichida ishlatish uchun Factory yaratish (Ob'yektni bir joyda yaratib, parolni shifrlash uchun)
@@ -22,7 +23,7 @@
 4. Github'ga yuklash
 3. password ko'rinadigani va roles
 2. company jadvalini client jadvaliga ulash
-1. Entity larni yaratamiz
+1. Entity larni yaratamiz (2 soat)
     - user:
         id
         email
