@@ -25,7 +25,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiResource(
     operations: [
         new GetCollection(
-            uriTemplate: '/client/by-company',
+            uriTemplate: '/clients/by-company',
             controller: GetClientsByCompanyAction::class,
             openapi: new Operation(
                 parameters: [
