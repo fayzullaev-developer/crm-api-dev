@@ -48,7 +48,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     ],
     normalizationContext: ['groups' => ['client:read']],
     denormalizationContext: ['groups' => ['client:write']],
-    paginationItemsPerPage: 10
+    paginationItemsPerPage: 20
 )]
 #[UniqueEntity('email', message: "Bu: {{ value }} email allaqachon mavjud.")]
 #[ApiFilter(

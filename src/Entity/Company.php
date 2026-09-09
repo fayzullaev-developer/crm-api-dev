@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiResource(
     normalizationContext: ['groups' => ['company:read']],
     denormalizationContext: ['groups' => ['company:write']],
-    paginationItemsPerPage: 10
+    paginationItemsPerPage: 20
 )]
 #[UniqueEntity('email', message: "Bu: {{ value }} email allaqachon mavjud.")]
 #[ApiFilter(
