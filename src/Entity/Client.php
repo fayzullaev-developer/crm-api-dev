@@ -16,8 +16,10 @@ use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\Parameter;
 use App\Controller\GetClientsByCompanyAction;
 use App\Repository\ClientRepository;
+use DateTimeZone;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Clock\DatePoint;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -81,7 +83,7 @@ class Client
     private ?string $givenName = null;
 
     #[ORM\Column]
-    #[Groups(['client:read', 'client:write'])]
+    #[Groups(['client:read'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToOne]
@@ -93,6 +95,11 @@ class Client
     #[ORM\ManyToOne]
     #[Groups(['client:read', 'client:write'])]
     private ?MediaObject $image = null;
+
+    public function __construct()
+    {
+        $this->createdAt = new DatePoint(timezone: new DateTimeZone('Asia/Tashkent'));
+    }
 
     public function getId(): ?int
     {

@@ -71,14 +71,14 @@ class CompanyFixtures extends Fixture
 
             $manager->persist($mediaObject);
 
-            $company = $this->companyFactory->create(
+            $newCompany = $this->companyFactory->create(
                 $company['email'],
                 $company['name'],
                 $company['address'],
                 $mediaObject,
             );
 
-            $manager->persist($company);
+            $manager->persist($newCompany);
         }
 
         $manager->flush();

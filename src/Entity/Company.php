@@ -8,8 +8,10 @@ use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\CompanyRepository;
+use DateTimeZone;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Clock\DatePoint;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -55,12 +57,17 @@ class Company
     private ?string $address = null;
 
     #[ORM\Column]
-    #[Groups(['company:read', 'company:write', 'client:read'])]
+    #[Groups(['company:read', 'client:read'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToOne]
     #[Groups(['company:read', 'company:write', 'client:read'])]
     private ?MediaObject $image = null;
+
+    public function __construct()
+    {
+        $this->createdAt = new DatePoint(timezone: new DateTimeZone('Asia/Tashkent'));
+    }
 
     public function getId(): ?int
     {

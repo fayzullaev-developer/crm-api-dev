@@ -1,9 +1,12 @@
 1.
-2.
+2. User entity'sida har so'rov kelganda lastActivityAt'ni o'zgartirish va post endpoint'ida passwordVisible'ni
+    so'ramaydigan qilish
 3.
 
 -- bajarilganlar --
 
+16. Api platform'dan client va company entity'larini post endpoint'ida createdAt ni olib tashlab,
+    avtomat yaratiladigan qilish
 15. Clientlarni company bo'yicha olish uchun repository yaratish (2 soat)
 14. fixture'lar (project uchun ma'lumotlar) ni kiritish uchun factory yaratilmagan entity'larga factory yaratamiz
        va fixture'larni kiritamiz:
