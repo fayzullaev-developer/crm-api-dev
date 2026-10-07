@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
@@ -23,6 +24,7 @@ use Vich\UploaderBundle\Mapping\Attribute as Vich;
     operations: [
         new Get(),
         new GetCollection(),
+        new Delete(),
         new Post(
             inputFormats: ['multipart' => ['multipart/form-data']],
             openapi: new Model\Operation(
