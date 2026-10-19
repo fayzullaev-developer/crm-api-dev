@@ -20,7 +20,7 @@ class UserFactory
         string $email,
         string $password,
         string $givenName,
-        MediaObject $image,
+        ?MediaObject $image = null,
     ): User
     {
         $user = new User();
