@@ -74,8 +74,7 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: 'Parol visible bo\'sh bo\'lmasligi kerak.')]
-    #[Groups(['user:read', 'user:write'])]
+    #[Groups(['user:read'])]
     private ?string $passwordVisible = null;
 
     #[ORM\Column(length: 255)]
